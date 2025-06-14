@@ -1,0 +1,17 @@
+<header>
+  <div class="navbar bg-base-100 shadow-sm">
+    <a class="btn btn-ghost text-xl" href="/">projets</a>
+    <div class="flex gap-2 flex-col">
+      {% for category in tag_list %}
+        <div class="flex flex-row gap-3 items-center">
+          <div class="min-w-24 text-right">{{ category.name }}</div>
+          <div class="flex flex-row flex-wrap gap-3">
+            {% for t in category.tags %}
+              <div class="badge badge-sm hover:bg-accent hover:cursor-pointer filter-tag">{{ t }}</div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</header>

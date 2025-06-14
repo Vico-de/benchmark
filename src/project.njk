@@ -1,0 +1,65 @@
+---
+pagination:
+  data: projets
+  size: 1
+  alias: projet
+permalink: "projets/{{ projet['Name'] | slugify }}.html"
+---
+
+<!DOCTYPE html>
+<html lang="en" class="" data-theme="wireframe">
+
+<head>
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="../assets/styles/index.css">
+  <script src="../assets/scripts/storage.js"></script>
+</head>
+
+<body>
+
+{% include 'header.njk' %}
+
+<main class="p-6">
+
+{% if projet["Tags"] != "" %}
+  <div class="flex flex-row mb-3">
+    {% for tag in projet["Tags"].split(',') %}
+      <span class="badge badge-sm">{{ tag }}</span>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<div class="flex flex-col gap-3 md:flex-row">
+  <div class="w-full md:w-[70%]">
+    <div class="carousel w-full aspect-video">
+      {% set imageCount = images[projet['Nomenclature images']] %}
+      {% for i in range(0, imageCount + 1) %}
+        {% set img = projet['Nomenclature images'] + i %}
+        <div id="photo{{ i + 1 }}" class="carousel-item w-full">
+          <img
+            src="../assets/img/{{ img }}.{{ imagesExt[img] }}"
+            class="object-cover w-full" />
+        </div>
+      {% endfor %}
+    </div>
+    <div class="flex w-full justify-center gap-2 py-2">
+      {% for i in range(0, imageCount + 1) %}
+        <a href="#photo{{ i + 1 }}" class="btn btn-xs">{{ i + 1 }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="prose">
+    <h1>{{ projet['Name'] }}</h1>
+    <h4><a href="https://www.google.com/maps/search/{{ projet['Lieu'] | url }}"
+           target="_blank">{{ projet['Lieu'] }}</a></h4>
+    <h4>Année: {{ projet['Année de livraison/réalisation'] }}</h4>
+    <h4>Coût: {% if projet['Coût'] %}{{ projet['Coût'] }} €{% endif %}</h4>
+    <h4>Superficie: {% if projet['Superficie'] %}{{ projet['Superficie'] }} ha{% endif %}</h4>
+    <h4>Concepteurs: {{ projet['Concepteurs'] }}</h4>
+    <p>{{ projet['Description du projet'] }}</p>
+  </div>
+</div>
+
+</main>
+
+</body>

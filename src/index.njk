@@ -1,0 +1,53 @@
+---
+title: Références
+---
+
+<!DOCTYPE html>
+<html lang="en" class="" data-theme="wireframe">
+
+<head>
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="assets/styles/index.css">
+  <script src="assets/scripts/storage.js"></script>
+</head>
+
+<body>
+
+{% include 'header.njk' %}
+
+<main class="p-6">
+
+<div class="w-full flex flex-row flex-wrap gap-3 justify-center">
+
+  {% for projet in projets %}
+    <div class="project w-64 md:w-88">
+      <div>
+      <figure class="relative group">
+        <a href="projets/{{ projet["Name"] | slugify }}">
+        <img
+          src="assets/img/{{ projet["Nomenclature images"] }}0.jpg"
+          class="aspect-video object-cover w-full"
+        />
+        <div class="absolute bottom-0 w-full px-2 py-1 bg-gray-800/50 hidden group-hover:block">
+          <div class="text-white font-medium">{{ projet["Name"] }}</div>
+        </div>
+      </figure>
+      </a>
+      </div>
+      <div class="flex flex-row flex-wrap gap-3 pt-2">
+      {% if projet["Tags"] != "" %}
+        {% for tag in projet["Tags"].split(',') %}
+          <span class="badge badge-sm">{{ tag }}</span>
+        {% endfor %}
+      {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+
+</div>
+
+</main>
+
+</body>
+
+</html>

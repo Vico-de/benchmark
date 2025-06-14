@@ -1,0 +1,27 @@
+{
+  "name": "projets-ref",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx eleventy",
+    "serve": "npx eleventy --serve"
+  },
+  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.1",
+    "@tailwindcss/postcss": "^4.1.8",
+    "cssnano": "^7.0.7",
+    "daisyui": "^5.0.43",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^4.1.8",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16"
+  }
+}

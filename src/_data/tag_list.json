@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Ville",
+    "tags": ["Square", "Place", "Parc"]
+  },
+  {
+    "name": "Écologie",
+    "tags": ["Biodiversité", "Réemploi", "Réhabilitation"]
+  },
+  {
+    "name": "Paysage",
+    "tags": ["Urbain"]
+  }
+]
