@@ -1,0 +1,26 @@
+name: Eleventy Build
+on: [push]
+permissions:
+  contents: write
+
+jobs:
+  build_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code ⬇️
+        uses: actions/checkout@master
+
+      - name: Setup environment 🏡
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Build website ⚙️
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
