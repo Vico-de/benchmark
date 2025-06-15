@@ -61,6 +61,7 @@ export default function (eleventyConfig) {
     ]);
 
     return {
+        pathPrefix: "/benchmark/",
         dir: { input: 'src', output: 'dist' },
     };
 }
