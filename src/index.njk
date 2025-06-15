@@ -24,8 +24,9 @@ title: Références
       <div>
       <figure class="relative group">
         <a href="projets/{{ projet["Name"] | slugify }}">
+        {% set img = projet["Nomenclature images"] + 0 %}
         <img
-          src="assets/img/{{ projet["Nomenclature images"] }}0.jpg"
+          src="assets/img/{{ img }}.{{ imagesExt[img] }}"
           class="aspect-video object-cover w-full"
         />
         <div class="absolute bottom-0 w-full px-2 py-1 bg-gray-800/50 hidden group-hover:block">
