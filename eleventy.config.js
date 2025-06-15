@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { readdir } from 'fs/promises';
 import path from 'path';
+import { HtmlBasePlugin } from "@11ty/eleventy";
 
 import cssnano from 'cssnano';
 import postcss from 'postcss';
@@ -10,6 +10,8 @@ import xlsx from 'xlsx';
 const exts = [ "numbers", "xlsx", "xlsb", "xls" ].join(", ");
 
 export default function (eleventyConfig) {
+    eleventyConfig.addPlugin(HtmlBasePlugin);
+
     // compile tailwind before eleventy processes the files
     eleventyConfig.on('eleventy.before', async () => {
         const tailwindInputPath = path.resolve('./src/assets/styles/index.css');
