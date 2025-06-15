@@ -47,7 +47,9 @@ export default function (eleventyConfig) {
             });
         }
     });
-
+    eleventyConfig.addFilter("formatNumber", function(number) {
+        return number.toLocaleString("fr-FR")
+    });
     eleventyConfig.addGlobalData("images", getPictureIndices());
     eleventyConfig.addGlobalData("imagesExt", getPictureExt());
 
